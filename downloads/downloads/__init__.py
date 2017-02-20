@@ -1,10 +1,10 @@
 from flask import Flask, render_template, redirect, url_for
 import traceback
 from config import BaseConfig
-from hvc.forms import VoteForm
-from hvc.database import initialise_db
-from hvc import models
-from hvc.database import db
+from downloads.forms import VoteForm
+from downloads.database import initialise_db
+from downloads import models
+from downloads.database import db
 
 
 def create_app(config=BaseConfig):

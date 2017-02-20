@@ -21,7 +21,8 @@ services:
     volumes:
       - ./downloads/downloads:/usr/src/downloads
       - /usr/src/downloads/static
-    command: /usr/local/bin/gunicorn --reload -b :8000 downloads:app
+    command: /usr/local/bin/gunicorn --reload -b :8000 downloads.wsgi:app
+#    command: bash
   nginx:
     image: nginx
     volumes:
