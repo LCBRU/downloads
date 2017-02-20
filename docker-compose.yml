@@ -7,7 +7,31 @@ services:
     volumes:
       - ./source:/usr/share/nginx/html
     ports:
+      - "8010:80"
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=80
+  downloads:
+    build: ./downloads
+    expose:
+      - "8000"
+    environment:
+      FLASK_SECRET_KEY: hiuhiuwef
+      FLASK_DEBUG: 'true'
+    volumes:
+      - ./downloads/downloads:/usr/src/downloads
+      - /usr/src/downloads/static
+    command: /usr/local/bin/gunicorn --reload -b :8000 downloads:app
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
       - "80:80"
     environment:
       - NGINX_HOST=foobar.com
       - NGINX_PORT=80
+    volumes_from:
+      - downloads:ro
+    links:
+      - downloads:downloads
