@@ -52,11 +52,11 @@ def initialise_db(app):
 
                     db.engine.execute("""
                         INSERT INTO db_version (version, appliedDate)
-                        VALUES (:version, :applied_date)
-                        """, {
-                        'version': int(f.split('.')[0]),
-                        'applied_date': datetime.datetime.now()
-                    })
+                        VALUES (%s, %s)
+                        """, [
+                        int(f.split('.')[0]),
+                        datetime.datetime.now()
+                    ])
                 except:
                     app.logger.error(traceback.format_exc())
                     db.engine.raw_connection().cursor().execute("ROLLBACK;")

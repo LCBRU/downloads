@@ -14,9 +14,7 @@ class BaseConfig(object):
 class TestConfig(BaseConfig):
     """Configuration for general testing"""
     TESTING = True
-    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-    DB_FILE = os.path.join(BASE_DIR, 'test.db')
-    SQLALCHEMY_DATABASE_URI = 'sqlite://'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:n0fwtj!@localhost/fred'
     WTF_CSRF_ENABLED = False
 
 

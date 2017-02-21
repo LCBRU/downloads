@@ -5,10 +5,10 @@ import datetime
 class Download(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String)
-    first_name = db.Column(db.String)
-    last_name = db.Column(db.String)
-    institution = db.Column(db.String)
+    title = db.Column(db.String(50))
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    institution = db.Column(db.String(500))
     scientific_purposes_only = db.Column(db.Boolean)
     requested_date = db.Column(db.DateTime())
 
