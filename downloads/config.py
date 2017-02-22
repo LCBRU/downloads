@@ -5,8 +5,8 @@ class BaseConfig(object):
     """Standard configuration options"""
     DEBUG = True
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-    DB_FILE = os.path.join(BASE_DIR, 'test.db')
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + DB_FILE
+    DOWNLOAD_DIR = os.path.join(BASE_DIR, 'files')
+    SQLALCHEMY_DATABASE_URI = 'mysql://testuser:tester@mysql/downloads'
     WTF_CSRF_ENABLED = True
     SECRET_KEY = "secret"
 

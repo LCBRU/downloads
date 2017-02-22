@@ -2,6 +2,7 @@
 version: '2'
 
 services:
+
   web:
     image: nginx
     volumes:
@@ -11,6 +12,7 @@ services:
     environment:
       - NGINX_HOST=foobar.com
       - NGINX_PORT=80
+
   downloads:
     build: ./downloads
     expose:
@@ -22,7 +24,11 @@ services:
       - ./downloads/downloads:/usr/src/downloads
       - /usr/src/downloads/static
     command: /usr/local/bin/gunicorn --reload -b :8000 downloads.wsgi:app
-#    command: bash
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+
   nginx:
     image: nginx
     volumes:
@@ -36,3 +42,14 @@ services:
       - downloads:ro
     links:
       - downloads:downloads
+
+  mysql:
+    restart: always
+    image: mysql:latest
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "True"
+      MYSQL_DATABASE: downloads
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: tester
+    expose:
+      - "3306"

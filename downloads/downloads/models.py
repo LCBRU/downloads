@@ -1,10 +1,11 @@
 from downloads.database import db
 import datetime
+import uuid
 
 
 class Download(db.Model):
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String(50), primary_key=True)
     title = db.Column(db.String(50))
     first_name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))
@@ -13,6 +14,7 @@ class Download(db.Model):
     requested_date = db.Column(db.DateTime())
 
     def __init__(self, *args, **kwargs):
+        self.id = uuid.uuid1()
         self.title = kwargs.get('title')
         self.first_name = kwargs.get('first_name')
         self.last_name = kwargs.get('last_name')
