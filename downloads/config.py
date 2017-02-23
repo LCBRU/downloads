@@ -14,7 +14,7 @@ class BaseConfig(object):
 class TestConfig(BaseConfig):
     """Configuration for general testing"""
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:n0fwtj!@localhost/fred'
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
     WTF_CSRF_ENABLED = False
 
 

@@ -18,6 +18,8 @@ lock = Lock()
 def initialise_db(app):
     db.init_app(app)
 
+
+def upgrade_db(app):
     app.logger.info('Upgrading DB')
 
     with lock:

@@ -14,7 +14,7 @@ class Download(db.Model):
     requested_date = db.Column(db.DateTime())
 
     def __init__(self, *args, **kwargs):
-        self.id = uuid.uuid1()
+        self.id = str(uuid.uuid1())
         self.title = kwargs.get('title')
         self.first_name = kwargs.get('first_name')
         self.last_name = kwargs.get('last_name')

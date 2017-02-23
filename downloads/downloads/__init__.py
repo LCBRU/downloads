@@ -23,6 +23,10 @@ def create_app(config=BaseConfig):
 
     @app.route('/', methods=['GET', 'POST'])
     def index():
+        return render_template('index.html')
+
+    @app.route('/request', methods=['GET', 'POST'])
+    def request():
         f = DownloadForm()
 
         if f.validate_on_submit():
@@ -40,7 +44,7 @@ def create_app(config=BaseConfig):
             return redirect(
                 url_for('submitted', id=d.id))
 
-        return render_template('details.html', form=f)
+        return render_template('request.html', form=f)
 
     @app.route('/submitted/<string:id>')
     def submitted(id):
