@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Research Data Download</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/main.css?v=1" rel="stylesheet">
+
+    {% block header %}{% endblock %}
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <a class="navbar-brand" href="#">Research Data Download</a>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+        <div class="col-md-3 nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('request')}}">ENGAGE</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+
+              {% set class="alert-info" %}
+              {% set gliph="glyphicon-info-sign" %}
+
+              {% if category == "warning" %}
+                {% set class="alert-warning" %}
+                {% set gliph="glyphicon-exclamation-sign" %}
+              {% elif category == "error" %}
+                {% set class="alert-danger" %}
+                {% set gliph="glyphicon-exclamation-sign" %}
+              {% elif category == "success" %}
+                {% set class="alert-success" %}
+                {% set gliph="glyphicon-ok" %}
+              {% endif %}
+
+
+              <div class="alert {{class}}" role="alert">
+                <span class="glyphicon {{gliph}}" aria-hidden="true"></span>
+                <span class="sr-only">{{category}}:</span>
+                {{message}}
+              </div>
+            {% endfor %}
+          {% endwith %}
+
+
+          {% block content %}{% endblock %}
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">&copy; 2017 NIHR Leicester Cardiovascular Biomedical Research Unit</span>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+  </body>
+</html>

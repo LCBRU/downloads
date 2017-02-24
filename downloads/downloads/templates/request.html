@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+{% import "_formHelpers.html" as formhelper %}
+
+{% block content %}
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+    <div>
+        {{ formhelper.render_field(form.title) }}
+    </div>
+    <div>
+        {{ formhelper.render_field(form.first_name) }}
+    </div>
+    <div>
+        {{ formhelper.render_field(form.last_name) }}
+    </div>
+    <div>
+        {{ formhelper.render_field(form.institution) }}
+    </div>
+    <div>
+        {{ formhelper.render_field(form.scientific_purposes_only) }}
+    </div>
+
+    <div class="text-right">
+        <a href="{{ url_for('index') }}" class="btn btn-default" role="button">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+    </form>
+
+{% endblock %}
