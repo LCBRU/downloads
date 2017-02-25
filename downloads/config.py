@@ -16,6 +16,7 @@ class LiveConfig(object):
     )
     logging.error('HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH')
     print(SQLALCHEMY_DATABASE_URI)
+    SQLALCHEMY_DATABASE_URI = 'mysql://lampuse:PeRin1@localhost/downloads'
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     DOWNLOAD_DIR = os.path.join(BASE_DIR, 'files')
     WTF_CSRF_ENABLED = True
