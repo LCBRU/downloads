@@ -1,8 +1,25 @@
 import os
 
 
+class LiveConfig(object):
+    """configuration options for live
+        environment variables are set in Apache http.conf
+    """
+    SECRET_KEY = os.getenv('FLASK_SECRET_KEY', '')
+    DEBUG = False
+    DB_NAME = os.getenv('DB_NAME', '')
+    DB_USER = os.getenv('DB_USER', '')
+    DB_PASS = os.getenv('DB_PASSWORD', '')
+    SQLALCHEMY_DATABASE_URI = 'mysql://{0}:{1}@localhost/{2}'.format(
+        DB_USER, DB_PASS, DB_NAME
+    )
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    DOWNLOAD_DIR = os.path.join(BASE_DIR, 'files')
+    WTF_CSRF_ENABLED = True
+
+
 class BaseConfig(object):
-    """Standard configuration options"""
+    """configuration options for dev docker instances"""
     DEBUG = True
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     DOWNLOAD_DIR = os.path.join(BASE_DIR, 'files')
@@ -18,5 +35,5 @@ class TestConfig(BaseConfig):
     WTF_CSRF_ENABLED = False
 
 
-class TestConfigCRSF(TestConfig):
+class TestConfigCRSF(BaseConfig):
     WTF_CSRF_ENABLED = True

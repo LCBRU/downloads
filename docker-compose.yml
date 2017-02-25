@@ -23,7 +23,7 @@ services:
     volumes:
       - ./downloads/downloads:/usr/src/downloads
       - /usr/src/downloads/static
-    command: /usr/local/bin/gunicorn --reload -b :8000 downloads.wsgi:app
+    command: /usr/local/bin/gunicorn --reload -b :8000 downloads.wsgi_dev:app
     depends_on:
       - mysql
     links:
