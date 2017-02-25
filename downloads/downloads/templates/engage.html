@@ -3,17 +3,50 @@
 
 {% block content %}
 
-        <div class="col-md-9">
-            <h1>Research Data Download</h1>
-            <p class="lead">
-                This site  contains research data released by the
-                NIHR Leicester Biomedical Research Unit and the
-                University of Leicester Cardiovascular Sciences
-                department.
-            </p>
-            <p>
-                Please select a link from the list of studies on the left.
-            </p>
-        </div>
+<h1><a href="http://www.euengage.org/" target="_blank">ENGAGE consortium</a> Telomere Length data file</h1>
+<p>
+    We are releasing the summary data from the 2013 ENGAGE
+    meta-analysis of mean telomere length genome-wide association
+    data, in order to enable other researchers to examine particular
+    variants or loci for their evidence of association with
+    telomere length. We include results from 2.5 million directly
+    genotyped or imputed single nucleotide polymorphisms (SNPs)
+    that passed the QC stage prior to the meta-analysis stage.
+    In our own analysis we excluded variants with a small sample size
+    (&lt;50% of the overall sample) but present them here with an
+    identifier as to which we did not consider.
+</p>
+
+<p>
+    The data contained within ENGAGE_telo_overall_finalrelease.txt are:
+</p>
+
+<ul>
+    <li>snp - rsid for the genetic marker</li>
+    <li> chr - Chromosome number</li>
+    <li>position -  Chromosomal position (hg18)</li>
+    <li>nstudy - Number of studies contributing data</li>
+    <li>n - Number of samples contributing data</li>
+    <li>n50drop - An indicator that identifies if the sample size was &gt;50% (0) or &lt;50% (1)</li>
+    <li>effectall - The effect allele</li>
+    <li>noneffectall - The non-effect allele</li>
+    <li>eaf - Average effect allele frequency</li>
+    <li>i2 -I-squared measure of heterogeneity</li>
+    <li>model - Data are from a fixed/random effects inverse-variance weighted meta-analysis</li>
+    <li>beta - Beta estimate</li>
+    <li>se - Standard Error of the Beta</li>
+    <li>p_gc - P-value after genomic control correction</li>
+</ul>
+
+<div class="downloads">
+    <a href="{{ url_for('request')}}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> ENGAGE_telo_overall_finalrelease</a>
+</div>
+
+<p>
+    If you use the data, please cite: Codd V, Nelson CP,
+    Albrecht E, Mangino M et al. (2013) Identification of
+    seven loci affecting mean telomere length and their
+    association with disease. Nature Genetics 45:422-427
+</p>
 
 {% endblock %}

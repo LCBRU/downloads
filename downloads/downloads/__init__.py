@@ -21,9 +21,13 @@ def create_app(config=BaseConfig):
         app.logger.error(traceback.format_exc())
         return render_template('500.html'), 500
 
-    @app.route('/', methods=['GET', 'POST'])
+    @app.route('/', methods=['GET'])
     def index():
         return render_template('index.html')
+
+    @app.route('/engage', methods=['GET'])
+    def engage():
+        return render_template('engage.html')
 
     @app.route('/request', methods=['GET', 'POST'])
     def request():
