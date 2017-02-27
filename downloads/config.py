@@ -5,11 +5,11 @@ class LiveConfig(object):
     """configuration options for live
         environment variables are set in Apache http.conf
     """
-    SECRET_KEY = os.getenv('FLASK_SECRET_KEY', 'oihoifhoqhf[r fpihqeriufh')
+    SECRET_KEY = os.getenv('FLASK_SECRET_KEY', 'NOT SET')
     DEBUG = False
-    DB_NAME = os.getenv('DB_NAME', 'downloads')
-    DB_USER = os.getenv('DB_USER', 'lampuser')
-    DB_PASS = os.getenv('DB_PASSWORD', 'PeRin1')
+    DB_NAME = os.getenv('DB_NAME', 'NOT SET')
+    DB_USER = os.getenv('DB_USER', 'NOT SET')
+    DB_PASS = os.getenv('DB_PASSWORD', 'NOT SET')
     SQLALCHEMY_DATABASE_URI = 'mysql://{0}:{1}@127.0.0.1/{2}'.format(
         DB_USER, DB_PASS, DB_NAME
     )
