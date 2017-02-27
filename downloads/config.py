@@ -1,4 +1,5 @@
 import os
+import logging
 
 
 class LiveConfig(object):
@@ -13,6 +14,7 @@ class LiveConfig(object):
     SQLALCHEMY_DATABASE_URI = 'mysql://{0}:{1}@127.0.0.1/{2}'.format(
         DB_USER, DB_PASS, DB_NAME
     )
+    logging.error(SQLALCHEMY_DATABASE_URI)
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     DOWNLOAD_DIR = os.path.join(BASE_DIR, 'files')
     WTF_CSRF_ENABLED = True
