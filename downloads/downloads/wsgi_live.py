@@ -10,9 +10,12 @@ def application(environ, start_response):
         os.environ[key] = environ.get(key, '')
         logging.error(os.environ[key])
 
-    app = create_app(LiveConfig())
+    def factory():
+        app = create_app(LiveConfig())
 
-    with app.app_context():
-        upgrade_db(app)
+        with app.app_context():
+            upgrade_db(app)
 
-    return app
+        return app
+
+    return factory
