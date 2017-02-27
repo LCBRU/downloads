@@ -5,11 +5,15 @@ from config import BaseConfig
 from downloads.forms import DownloadForm
 from downloads.database import initialise_db, db
 from downloads.models import Download
+import logging
 
 
 def create_app(config=BaseConfig):
     app = Flask(__name__)
     app.config.from_object(config)
+    app.config.from_pyfile('application.cfg', silent=True)
+
+    logging.error(app.config['SQLALCHEMY_DATABASE_URI'])
 
     with app.app_context():
         initialise_db(app)
