@@ -90,3 +90,4 @@ ENV/
 .ropeproject
 
 files
+application.cfg
