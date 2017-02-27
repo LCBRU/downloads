@@ -2,6 +2,7 @@ import os
 import logging
 from downloads import create_app
 from downloads.database import upgrade_db
+from config import LiveConfig
 
 
 def application(environ, start_response):
@@ -9,9 +10,7 @@ def application(environ, start_response):
         os.environ[key] = environ.get(key, '')
         logging.error(os.environ[key])
 
-    from config import LiveConfig
-
-    app = create_app(LiveConfig)
+    app = create_app(LiveConfig())
 
     with app.app_context():
         upgrade_db(app)
