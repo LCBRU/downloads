@@ -26,6 +26,12 @@ To run the application for development, run the command:
 python wsgi_dev.py
 ```
 
+To run the application for in the live environment, run the command:
+
+```bash
+python wsgi_live.py
+```
+
 ## Development
 
 ### Create a Download Page
