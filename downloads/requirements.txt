@@ -6,7 +6,7 @@ SQLAlchemy
 Werkzeug
 gunicorn
 itsdangerous
-mysqlclient
 Flask-WTF
 beautifulsoup4
 pytest
+PyMySQL
