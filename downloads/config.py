@@ -6,7 +6,7 @@ class BaseConfig(object):
     DEBUG = True
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
     DOWNLOAD_DIR = os.path.join(BASE_DIR, 'files')
-    SQLALCHEMY_DATABASE_URI = 'mysql://testuser:tester@mysql/downloads'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://testuser:tester@mysql/downloads'
     WTF_CSRF_ENABLED = True
     SECRET_KEY = "secret"
 
