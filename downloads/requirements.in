@@ -1,0 +1,12 @@
+Flask
+Flask-SQLAlchemy
+Jinja2
+MarkupSafe
+SQLAlchemy
+Werkzeug
+gunicorn
+itsdangerous
+Flask-WTF
+beautifulsoup4
+pytest
+PyMySQL
