@@ -63,7 +63,7 @@ def create_app(config=BaseConfig):
             app.config['DOWNLOAD_DIR'],
             'ENGAGE_telo_overall_finalrelease.zip',
             as_attachment=True,
-            attachment_filename='ENGAGE_telo_overall_finalrelease.zip'
+            download_name='ENGAGE_telo_overall_finalrelease.zip'
         )
 
     return app
