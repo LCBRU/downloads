@@ -8,5 +8,7 @@ gunicorn
 itsdangerous
 Flask-WTF
 beautifulsoup4
-pytest
 PyMySQL
+pytest
+pytest-xdist
+pytest-cov
