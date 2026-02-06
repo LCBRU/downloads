@@ -53,12 +53,12 @@ def create_app(config=BaseConfig):
 
     @app.route('/submitted/<string:id>')
     def submitted(id):
-        d = Download.query.get_or_404(id)
+        d = db.get_or_404(Download, id)
         return render_template('submitted.html', id=d.id)
 
     @app.route('/download/<string:id>')
     def download(id):
-        Download.query.get_or_404(id)
+        d = db.get_or_404(Download, id)
         return send_from_directory(
             app.config['DOWNLOAD_DIR'],
             'ENGAGE_telo_overall_finalrelease.zip',

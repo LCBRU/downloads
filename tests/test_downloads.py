@@ -5,12 +5,12 @@
 
 import pytest
 import downloads
-from pprint import pprint
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 from config import TestConfig, TestConfigCRSF
 from downloads.models import Download
 from downloads.database import db as _db
+from sqlalchemy import select, func
 
 
 class Tureen(BeautifulSoup):
@@ -170,9 +170,9 @@ def test_download_form_submission(
     assert resp.status_code == 302
 
     assert urlparse(resp.location).path.startswith('/submitted/')
-    assert Download.query.count() == 1
+    assert db.session.execute(select(func.count(Download))).scalar_one() == 1
 
-    actual = Download.query.first()
+    actual = db.session.execute(select(Download)).scalar_one()
     assert actual.title == title
     assert actual.first_name == first_name
     assert actual.last_name == last_name
@@ -211,4 +211,4 @@ def test_download_form_submission_not_scientific(
 
     assert resp.status_code == 200
 
-    assert Download.query.count() == 0
+    assert db.session.execute(select(func.count(Download))).scalar_one() == 0
